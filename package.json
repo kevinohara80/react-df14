@@ -1,0 +1,15 @@
+{
+  "name": "DF14",
+  "version": "0.0.0",
+  "description": "DF14 React.js Demo",
+  "author": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.8.8",
+    "gulp-util": "^3.0.1"
+  }
+}
