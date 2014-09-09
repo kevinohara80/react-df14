@@ -5,5 +5,8 @@ node_modules
 *.sublime*
 config
 
+# Build
+build
+
 # Misc
 .DS_Store
