@@ -8,7 +8,7 @@
 
 var gulp = require('gulp');
 
-gulp.task('bundle', function() {
+gulp.task('scripts', function() {
 
   var browserify = require('browserify');
   var source     = require('vinyl-source-stream');
@@ -18,14 +18,12 @@ gulp.task('bundle', function() {
   
   var b = browserify();
 
-  b.add('./client/main.js');
+  b.add('./client/js/main.js');
 
   b.transform(reactify);
 
   return b.bundle()
     .pipe(source('main.js'))
-    .pipe(gulp.dest('./build'))
-    .pipe(streamify(zip('react.resource')))
-    .pipe(gulp.dest('./src/staticresources'));
+    .pipe(gulp.dest('./build/js'));
     
 });

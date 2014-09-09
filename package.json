@@ -11,9 +11,11 @@
   "devDependencies": {
     "browserify": "^5.11.1",
     "gulp": "^3.8.8",
+    "gulp-jshint": "^1.8.4",
     "gulp-streamify": "0.0.5",
     "gulp-util": "^3.0.1",
     "gulp-zip": "^2.0.1",
+    "jshint-stylish": "^0.4.0",
     "react": "^0.11.1",
     "reactify": "^0.14.0",
     "rimraf": "^2.2.8",
