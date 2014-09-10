@@ -1,15 +1,8 @@
 var React = require('react');
-var main  = require('./components/main.jsx')();
+var main  = require('./components/main.jsx');
+var app   = require('./app/tasks-app');
 
 // start renderinf the app
-React.renderComponent(main, document.getElementById('main'));
+React.renderComponent(main(), document.getElementById('main'));
 
-var a = new SObjectModel.Account();
-
-a.retrieve({ limit: 10 }, function(err, records, event) {
-  if(err) return console.error(err);
-  console.log(records);
-  main.setState({ loading: false });
-});
-
-
+app.start();

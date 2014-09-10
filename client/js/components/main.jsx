@@ -1,15 +1,29 @@
 var React = require('react');
+var App   = require('../app/tasks-app');
 
 var MainComponent = React.createClass({
 
   getInitialState: function() {
     return {
-      loading: true
+      status: App.getStatus(),
+      tasks: App.getTasks()
     };
   },
 
+  componentDidMount: function() {
+    App.addStatusChangeListener(this._onStatusChange);
+  },
+
+  componentWillUnmount: function() {
+    App.removeStatusChangeListener(this._onStatusChange);
+  },
+
+  _onStatusChange: function() {
+    this.setState({ status: App.getStatus() });
+  },
+
   getContent: function() {
-    if(this.state.loading) {
+    if(this.state.status === 'loading') {
       /* jshint ignore:start */
       return (
         <p>Loading...</p>

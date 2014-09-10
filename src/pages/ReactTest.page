@@ -1,27 +1,24 @@
 <apex:page docType="html-5.0" showHeader="false" sidebar="fakse" standardStylesheets="false">
-  <html lang="en">
 
-    <head>
-      <title>React Test</title>
-      <meta charset="utf-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
+  <head>
+    <title>React Test</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
 
-      <apex:remoteObjects >
-        <apex:remoteObjectModel name="Task" jsShorthand="task" fields="Id, Subject, CreatedDate" />
-        <apex:remoteObjectModel name="Account" jsShorthand="account" fields="Id, Name, CreatedDate" />
-      </apex:remoteObjects>
-    </head>
+    <apex:remoteObjects >
+      <apex:remoteObjectModel name="Task" jsShorthand="task" fields="Id, Subject, CreatedDate" />
+      <apex:remoteObjectModel name="Account" jsShorthand="account" fields="Id, Name, CreatedDate" />
+    </apex:remoteObjects>
+  </head>
 
-    <body>
-      <div class="container-fluid" id="main"></div>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-      <script src="{!URLFOR($Resource.react, 'js/main.js')}"></script>
-    </body>
-
-  </html>
+  <body>
+    <div class="container-fluid" id="main"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="{!URLFOR($Resource.react, 'js/main.js')}"></script>
+  </body>
 	
 </apex:page>
