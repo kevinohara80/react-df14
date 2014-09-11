@@ -36,18 +36,105 @@ var TaskApp = merge(EventEmitter.prototype, {
   removeStatusChangeListener: function(callback) {
     this.removeListener('status:change', callback);
   },
+
+  /* crud */
+
+  addTask: function() {
+
+    var t = new SObjectModel.task({
+      Subject: 'New Task',
+      Status: 'Not Started',
+      WhatId: window.accountId
+    });
+    
+    tasks.push(t);
+
+    this.emit('status:change');
+  },
+
+  updateTaskValue: function(id, field, value) {
+    tasks[id].set(field, value);
+  },
+
+  saveTask: function(id) {
+    var self = this;
+
+    var task = tasks[id];
+
+    if(task.get('Id')) {
+      console.log('updating task...');
+      task.update({
+        Id: task.get('Id'),
+        Status: task.get('Status'),
+        Subject: task.get('Subject')
+      }, function(err) {
+        if(err) {
+          console.error(err);
+          self.loadTasks();
+        } else {
+          // nothing, it worked
+        }
+      });
+    } else {
+      console.log('creating task...');
+      task.create(function(err, rec) {
+        if(err) {
+          console.error(err);
+          self.loadTasks();
+        } else {
+          // nothing, it worked
+          self.emit('status:change');
+        }
+      });
+    }
+    
+  },
+
+  deleteTask: function(id) {
+    var self = this;
+    var task = tasks.splice(id, 1)[0];
+
+    this.emit('status:change');
+
+    if(task.get('Id')) {
+      task.del(function(err) {
+        if(err) {
+          console.error(err);
+          // reload the tasks if it fails
+          self.loadTasks();
+        }
+      });
+    }
+  },
+
+  /* querying */
+
+  getQuery: function() {
+    var query = {
+      where: {
+        WhatId: { eq: window.accountId }
+      },
+      orderby: [
+        { CreatedDate: 'ASC' }
+      ],
+      limit: 10
+    };
+    return query;
+  },
   
   loadTasks: function() {
     var self = this;
     this.changeStatus('loading');
-    Task.retrieve({ limit: 10 }, function(err, records, event) {
+
+    Task.retrieve(this.getQuery(), function(err, records, event) {
       if(err) return console.error(err);
       console.log(records);
       tasks = records;
-      self.emit('tasks:loaded');
       self.changeStatus('ready');
     });
   },
+
+  /* main start function */
 
   start: function() {
     this.loadTasks();
@@ -55,4 +142,4 @@ var TaskApp = merge(EventEmitter.prototype, {
 
 });
 
-module.exports = TaskApp;
+module.exports = window.TaskApp = TaskApp;

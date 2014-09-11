@@ -1,4 +1,5 @@
-<apex:page docType="html-5.0" showHeader="false" applyBodyTag="false" applyHtmlTag="false" sidebar="false" standardStylesheets="false">
+<apex:page showHeader="false" applyBodyTag="false" applyHtmlTag="false" sidebar="false"  standardStylesheets="false" standardController="Account">
+
   <html lang="en">
     <head>
       <title>React Test</title>
@@ -7,12 +8,20 @@
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
-
       <apex:remoteObjects >
-        <apex:remoteObjectModel name="Task" jsShorthand="task" fields="Id, Subject, Status, CreatedDate" />
+        <apex:remoteObjectModel name="Task" jsShorthand="task" fields="Id, Subject, WhatId, Status, CreatedDate" />
+        <apex:remoteObjectModel name="Account" jsShorthand="account" fields="Id, Name, CreatedDate" />
       </apex:remoteObjects>
-
+      
+      <script type="text/javascript">
+        (function() {
+          // set a single global for the accountId
+          window.accountId = '{!Account.Id}';
+        }());
+      </script>
+    
     </head>
+
 
     <body>
       <div class="container-fluid" id="main"></div>
@@ -22,4 +31,5 @@
     </body>
 
   </html>
+   
 </apex:page>

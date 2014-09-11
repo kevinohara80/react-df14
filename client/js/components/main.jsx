@@ -1,6 +1,8 @@
 var React = require('react');
 var App   = require('../app/tasks-app');
 
+var TasksTable = require('./tasks-table.jsx');
+
 var MainComponent = React.createClass({
 
   getInitialState: function() {
@@ -19,7 +21,10 @@ var MainComponent = React.createClass({
   },
 
   _onStatusChange: function() {
-    this.setState({ status: App.getStatus() });
+    this.setState({ 
+      status: App.getStatus(),
+      tasks: App.getTasks() 
+    });
   },
 
   getContent: function() {
@@ -32,7 +37,7 @@ var MainComponent = React.createClass({
     } else {
       /* jshint ignore:start */
       return (
-        <p>Done!</p>
+        <TasksTable tasks={this.state.tasks} />
       );
       /* jshint ignore:end */
     }
