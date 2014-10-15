@@ -1,6 +1,5 @@
-var React = require('react');
-var App   = require('../app/tasks-app');
-
+var React      = require('react');
+var App        = require('../app/tasks-app');
 var TasksTable = require('./tasks-table.jsx');
 
 var MainComponent = React.createClass({

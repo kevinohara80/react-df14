@@ -6,8 +6,9 @@ var TasksTableRow = require('./tasks-table-row.jsx');
 var TasksTable = React.createClass({
 
   getRows: function() {
+    
     var rows = [];
-    console.log('getRows tasks : ' + this.props.tasks.length);
+    
     if(this.props.tasks && this.props.tasks.length > 0) {
       this.props.tasks.forEach(function(t, idx) {
         /* jshint ignore:start */
@@ -15,7 +16,7 @@ var TasksTable = React.createClass({
         /* jshint ignore:end */
       });
     }
-    console.log('returning ' + rows.length + ' rows');
+
     return rows;
   },
 
