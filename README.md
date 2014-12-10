@@ -3,9 +3,17 @@ react-df14
 
 React.js demo for DF14
 
-To build the client-side assets, you'll need to install [gulp](http://gulpjs.com/)
+## Requirements
+* [node](http://nodejs.org)
+* [gulp](http://gulpjs.com/)
 
-Then just run it
+Once you have node and gulp installed, you'll need to run npm install
+
+```bash
+$ npm install
+```
+
+This will install all of the module dependencies. Then to run the build you just need to run gulp's default task.
 
 ```bash
 $ gulp
